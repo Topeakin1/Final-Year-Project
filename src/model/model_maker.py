@@ -7,30 +7,21 @@ import pickle
 
 # read in the data set JSON file and turn it into the format above
 feature_data = []
-s = 0
-ns = 0
+
 with open('balanced_reviews.json') as data_file:
     for line in data_file:
         data_item = json.loads(line)
         feature_data.append(({'text': data_item['review_text'].strip()}, data_item['is_spoiler']))
-        if data_item['is_spoiler']:
-            s += 1
-        else:
-            ns += 1
-
-print(f"spoilers: {s}")
-print(f"non-spoilers: {ns}")
-
 
 # split the data into training and testing data
-# there are 573913 data points
-# training_data, test_data = feature_data[:500000], feature_data[500000:]
-# # train the classifier with the training data
-# classifier = nltk.NaiveBayesClassifier.train(training_data)
-# # print out the classifiers accuracy on the test data
-# print(nltk.classify.accuracy(classifier, test_data))
+# should be randomised here
+training_data, test_data = feature_data[:200000], feature_data[200000:]
+# train the classifier with the training data
+classifier = nltk.NaiveBayesClassifier.train(training_data)
+# print out the classifiers accuracy on the test data
+print(nltk.classify.accuracy(classifier, test_data))
 
-# #save classifier so we don't have to retrain it every time we want to use it
-# classifier_file = open('naive_bayes_classifier.pickle', 'wb')
-# pickle.dump(classifier, classifier_file)
-# classifier_file.close()
+#save classifier so we don't have to retrain it every time we want to use it
+classifier_file = open('naive_bayes_classifier.pickle', 'wb')
+pickle.dump(classifier, classifier_file)
+classifier_file.close()
