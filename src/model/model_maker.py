@@ -1,25 +1,34 @@
 import json
 import nltk
 import pickle
+import random
 
 # data structure for storing training data should be [({'text':'text of paragraph...'}, True/False)]; True/False
 # indicates if the text is a spoiler or not
 
+TRAIN_TEST_SPLIT = 200000
+
 # read in the data set JSON file and turn it into the format above
 feature_data = []
-
 with open('balanced_reviews.json') as data_file:
     for line in data_file:
+        # load review text from JSON
         data_item = json.loads(line)
         text = data_item['review_text'].strip().lower()
+        # split text up into a list of it's words
         text = nltk.word_tokenize(text)
+        # make different versions of the same word equal, e.g. go, goes and going all become go
         stemmer = nltk.PorterStemmer()
-        text = [stemmer.stem(word) for word in text if word.isalpha()]
+        # remove stopwords e.g. the, and, a
+        stopwords = nltk.corpus.stopwords.words('english')
+        text = [stemmer.stem(word) for word in text if word.isalpha() and word not in stopwords]
+        text = " ".join(text)
         feature_data.append(({'text': text}, data_item['is_spoiler']))
 
 # split the data into training and testing data
 # should be randomised here
-training_data, test_data = feature_data[:200000], feature_data[200000:]
+random.shuffle(feature_data)
+training_data, test_data = feature_data[:TRAIN_TEST_SPLIT], feature_data[TRAIN_TEST_SPLIT:]
 # train the classifier with the training data
 classifier = nltk.NaiveBayesClassifier.train(training_data)
 # print out the classifiers accuracy on the test data
