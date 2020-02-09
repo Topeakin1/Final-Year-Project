@@ -8,6 +8,7 @@ import string
 # Open the file in read mode 
 text = open("IMDB_reviews.json", "r") 
 
+
 stopwords = []
 with open("stopwords.txt", "r") as file: 
     for line in file:
@@ -22,7 +23,10 @@ print(stopwords)
 d = dict() 
   
 # Loop through each line of the file 
+stopwords = nltk.corpus.stopwords.words('english')
 for line in text: 
+    data = json.loads(line)
+    line = data['review_text']
     # Remove the leading spaces and newline character 
     line = line.strip() 
   
@@ -39,12 +43,13 @@ for line in text:
     # Iterate over each word in line 
     for word in words: 
         # Check if the word is already in dictionary 
-        if word in d: 
+        if word not in stopwords:
+            if word in d: 
             # Increment count of word by 1 
-            d[word] = d[word] + 1
-        else: 
+                d[word] = d[word] + 1
+            else: 
             # Add the word to dictionary with count 1 
-            d[word] = 1
+                d[word] = 1
             
 
 a = sorted(d.items(), key=lambda x: x[1], reverse=True)
