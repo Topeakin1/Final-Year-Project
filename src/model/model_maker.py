@@ -13,6 +13,7 @@ TRAIN_TEST_SPLIT = int(SAMPLE_SIZE * 0.75)
 # read in the data set JSON file and turn it into the format above
 feature_data = []
 i = 0
+stopwords = nltk.corpus.stopwords.words('english')
 with open('balanced_reviews.json') as data_file:
     for line in data_file:
         # load review text from JSON
@@ -23,7 +24,6 @@ with open('balanced_reviews.json') as data_file:
         # make different versions of the same word equal, e.g. go, goes and going all become go
         stemmer = nltk.PorterStemmer()
         # remove stopwords e.g. the, and, a
-        stopwords = nltk.corpus.stopwords.words('english')
         text = [stemmer.stem(word) for word in text if word.isalpha() and word not in stopwords]
         text = " ".join(text)
         feature_data.append(({'text': text}, data_item['is_spoiler']))
