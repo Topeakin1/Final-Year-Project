@@ -2,14 +2,17 @@ import json
 import nltk
 import pickle
 import random
+import balance_dataset
 
 # data structure for storing training data should be [({'text':'text of paragraph...'}, True/False)]; True/False
 # indicates if the text is a spoiler or not
 
-TRAIN_TEST_SPLIT = 200000
+SAMPLE_SIZE = 200#balance_dataset.MAX_NUM_OF_EACH_CATEGORY * 2
+TRAIN_TEST_SPLIT = int(SAMPLE_SIZE * 0.75)
 
 # read in the data set JSON file and turn it into the format above
 feature_data = []
+i = 0
 with open('balanced_reviews.json') as data_file:
     for line in data_file:
         # load review text from JSON
@@ -24,6 +27,9 @@ with open('balanced_reviews.json') as data_file:
         text = [stemmer.stem(word) for word in text if word.isalpha() and word not in stopwords]
         text = " ".join(text)
         feature_data.append(({'text': text}, data_item['is_spoiler']))
+        i += 1
+        if i >= SAMPLE_SIZE:
+            break
 
 # split the data into training and testing data
 # should be randomised here
