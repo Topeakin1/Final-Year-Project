@@ -2,4 +2,5 @@ IMDB_reviews.zip
 IMDB_reviews.json
 naive_bayes_classifier.pickle
 balanced_reviews.json
+preprocessed_reviews.*
 __pycache__/
