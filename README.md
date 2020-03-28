@@ -14,7 +14,7 @@ The following steps are needed to run this project.
 - Click the icon.
 - Navigate to More tools --> Extensions.
 - Click the "Load Unpacked" button in the top left corner.
-- Select the folder containing the extension code (it is called "extension code".
+- Select the folder containing the extension code (it is called "extension code").
 - This should load in the Spoiler BeGone extension.
 - Click the activate button on the bottom right corner of the extension.
 
