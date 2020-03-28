@@ -48,9 +48,9 @@ classifier = nltk.NaiveBayesClassifier.train(training_data)
 print(nltk.classify.accuracy(classifier, test_data)) 
 
 #save classifier so we don't have to retrain it every time we want to use it
-# classifier_file = open('naive_bayes_classifier.pickle', 'wb')
-# pickle.dump(classifier, classifier_file)
-# classifier_file.close()
+classifier_file = open('naive_bayes_classifier.pickle', 'wb')
+pickle.dump(classifier, classifier_file)
+classifier_file.close()
 
 
 
