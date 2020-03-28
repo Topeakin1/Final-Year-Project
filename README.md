@@ -1,7 +1,7 @@
-Student Name: Temitope Akinwale
-Student Number: 16308933
-Supervisor: Brian MacNamee
-Project Title : Spoiler BeGone
+Student Name: Temitope Akinwale.
+Student Number: 16308933.
+Supervisor: Brian MacNamee.
+Project Title : Spoiler BeGone.
 
 The goal of my project was to create a platform that can remove spoilers on the internet using machine learning principles. The development of my model and API was completed in Python a while the Chrome extension was developed in JavaScript as well as using HTML and CSS. 
 
