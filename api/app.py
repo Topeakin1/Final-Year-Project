@@ -1,9 +1,17 @@
+#Temitope Akinwale 16308933
+#In this file i implement my API using flask
+#I conenct my machine learning model to my API and load in the predictive results 
+#I also use a function from my content file which allows the HTML code to be recognised
+#This connects my app to my chrome extension.
+
+#importing libraries 
 import numpy as np
 import nltk
 from flask import Flask, request, jsonify, render_template, make_response, json
 import pickle
 from html.parser import HTMLParser
 
+#html parser to take data in from html pages
 class MyHTMLParser(HTMLParser):
 
     def __init__(self):
@@ -13,9 +21,11 @@ class MyHTMLParser(HTMLParser):
     def handle_data(self, data):
         self.text += data
 
+#creating flask app and loading in machine learning model
 app = Flask(__name__, template_folder='.')
 model = pickle.load(open('naive_bayes_classifier.pickle', 'rb'))
 
+#route the app takes to connect to the web
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -23,31 +33,19 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 
-    #prediction = model.classify({'text': request.prediction})
-    #prediction = model.classify({'text': request.get_json()['prediction']})
-    #print(request.data)
-
-    #prediction = model.classify({ 'text': prediction})
+    #taking in the html code and using the model to predict whether or not it is a spoiler
     html_parser = MyHTMLParser()
     html_parser.feed(request.form.get('prediction'))
     print(html_parser.text)
-    prediction = model.classify({'text': html_parser.text})
-    return f'{prediction}'
-    #prediction = model.classify({'text': request.args['prediction']})
-    # print('prediction')
-    # response = make_response()
-    # response.mimetype = 'application/json'
-    # response.data = json.dumps({'is_spoiler': prediction})
-    # return response
-    # return render_template('home.html', prediction_text='The entry submitted is a spoiler : {}'.format(prediction))
+    prediction = model.classify({'text': html_parser.text}) #classifying the html text
+    return f'{prediction}' #return the prediction
 
 @app.route('/results',methods=['POST'])
 def results():
 
-    data = request.get_json(force=True)
+    data = request.get_json(force=True) #get the results as a json and output whether or not its a spoiler
 
     return jsonify(output)
 
 if __name__ == "__main__":
-    app.run(debug=True) 
-
+    app.run(debug=True)
