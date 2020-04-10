@@ -19,6 +19,8 @@ The following steps are needed to run this project.
 - Click the activate button on the bottom right corner of the extension.
 
 - On your desktop navigate to command prompt.
+- Make sure to have a python version installed or download one at: https://www.python.org/downloads/
+- Enter in the command "pip install Flask" / "pip3 install Flask" for python 3 users.
 - Use the cd command to navigate to the api folder.
 - Enter in the command "python app.py". 
 - This will genenerate a local host that will then connect to the chrome extension.
@@ -27,5 +29,5 @@ The following steps are needed to run this project.
 - You should see an S icon beside the "star" icon for bookmarking.
 - Navigate to any webpage and if a spoiler is detected the model should black out the paragraph containing the spoiler.
 
-
+The data set used in this project is too large to upload on GitHub, the Google Drive link below should be used to download it to run the code properly.
 
