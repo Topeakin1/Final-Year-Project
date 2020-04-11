@@ -12,7 +12,7 @@ The following steps are needed to run this project.
 - Download Google Chrome.
 - In the top right hand corner there is an icon containing three dots.
 - Click the icon.
-- Navigate to More tools --> Extensions.
+- Navigate to More tools --> Extensions --> Enable Developer Mode. 
 - Click the "Load Unpacked" button in the top left corner.
 - Select the folder containing the extension code (it is called "extension").
 - This should load in the Spoiler BeGone extension.
