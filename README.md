@@ -12,7 +12,7 @@ The following steps are needed to run this project.
 - Download Google Chrome.
 - In the top right hand corner there is an icon containing three dots.
 - Click the icon.
-- Navigate to More tools --> Extensions.
+- Navigate to More tools --> Extensions --> Enable Developer Mode. 
 - Click the "Load Unpacked" button in the top left corner.
 - Select the folder containing the extension code (it is called "extension").
 - This should load in the Spoiler BeGone extension.
@@ -20,6 +20,9 @@ The following steps are needed to run this project.
 
 - On your desktop navigate to command prompt.
 - Make sure to have a python version installed or download one at: https://www.python.org/downloads/
+- We need to install the libraries used.
+- Enter in the following commands : "pip install numpy" & "pip install nltk".
+- If a ModuleNotFoundError occurs, enter in the "pip install" command followed by the name of the module thats missing.
 - Enter in the command "pip install Flask" / "pip3 install Flask" for python 3 users.
 - Use the cd command to navigate to the api folder.
 - Enter in the command "python app.py". 
@@ -29,5 +32,5 @@ The following steps are needed to run this project.
 - You should see an S icon beside the "star" icon for bookmarking.
 - Navigate to any webpage and if a spoiler is detected the model should black out the paragraph containing the spoiler.
 
-The data set used in this project is too large to upload on GitHub, the Google Drive link below should be used to download it to run the code properly.
-
+The data set used in this project is too large to upload on GitHub, the Google Drive link below should be used to download it to run the code properly. Go to the FYP Data Sets folder.
+https://drive.google.com/drive/folders/1wngzUuMIhBsjualNI2ChMjxXm-0U09uA
