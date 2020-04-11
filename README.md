@@ -20,6 +20,9 @@ The following steps are needed to run this project.
 
 - On your desktop navigate to command prompt.
 - Make sure to have a python version installed or download one at: https://www.python.org/downloads/
+- We need to install the libraries used.
+- Enter in the following commands : "pip install numpy" & "pip install nltk".
+- If a ModuleNotFoundError occurs, enter in the "pip install" command followed by the name of the module thats missing.
 - Enter in the command "pip install Flask" / "pip3 install Flask" for python 3 users.
 - Use the cd command to navigate to the api folder.
 - Enter in the command "python app.py". 
