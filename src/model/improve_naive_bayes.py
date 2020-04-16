@@ -42,7 +42,7 @@ training_data, test_data = feature_data[:TRAIN_TEST_SPLIT], feature_data[TRAIN_T
 training_target, test_target = target[:TRAIN_TEST_SPLIT], target[TRAIN_TEST_SPLIT:]
 
 #vector representation
-count_vec = CountVectorizer(max_df=0.9, min_df=3, binary = True)
+count_vec = CountVectorizer(max_df=0.9, min_df=3)
 t = count_vec.fit_transform(feature_data)
 trans_data = t[:TRAIN_TEST_SPLIT]
 test_trans_data = t[TRAIN_TEST_SPLIT:]
