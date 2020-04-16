@@ -32,5 +32,8 @@ The following steps are needed to run this project.
 - You should see an S icon beside the "star" icon for bookmarking.
 - Navigate to any webpage and if a spoiler is detected the model should black out the paragraph containing the spoiler.
 
-The data set used in this project is too large to upload on GitHub, the Google Drive link below should be used to download it to run the code properly. Go to the FYP Data Sets folder.
+The data set used in this project is too large to upload on GitHub, the Google Drive link below should be used to download all of the files to run the code properly. Go to the FYP Data Sets folder.
+Download these files and place them in the same directory.
+The json files go into the src--> model folder.
+The pickle file goes into the src --> model folder and the api folder.
 https://drive.google.com/drive/folders/1wngzUuMIhBsjualNI2ChMjxXm-0U09uA
