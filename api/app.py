@@ -7,7 +7,6 @@
 #importing libraries 
 import numpy as np
 import nltk
-from nltk.tokenize import sent_tokenize
 from flask import Flask, request, jsonify, render_template, make_response, json
 import pickle
 from html.parser import HTMLParser
@@ -37,9 +36,8 @@ def predict():
     #taking in the html code and using the model to predict whether or not it is a spoiler
     html_parser = MyHTMLParser()
     html_parser.feed(request.form.get('prediction'))
-    sentence = sent_tokenize(html_parser.text)
     print(html_parser.text)
-    prediction = model.classify({'text': sentence}) #classifying the html text
+    prediction = model.classify({'text': html_parser.text}) #classifying the html text
     return f'{prediction}' #return the prediction
 
 @app.route('/results',methods=['POST'])
